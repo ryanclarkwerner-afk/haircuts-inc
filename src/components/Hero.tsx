@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import heroImage from "@/assets/hero-main.jpg";
 
 const container = {
   hidden: {},
@@ -14,15 +15,15 @@ const item = {
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background gradient */}
+      {/* Background gradient fallback */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-secondary z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto w-full px-4 md:px-8 pt-20">
         <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center min-h-[80vh]">
-          {/* Image placeholder */}
+          {/* Image */}
           <div className="md:col-span-3 hidden md:flex items-center justify-center">
-            <div className="w-full aspect-[4/5] max-h-[70vh] bg-secondary rounded-lg flex items-center justify-center">
-              <span className="text-muted-foreground font-heading text-xl tracking-wider">[Salon Photo]</span>
+            <div className="w-full aspect-[4/5] max-h-[70vh] rounded-lg overflow-hidden">
+              <img src={heroImage} alt="Haircuts Inc. salon" className="w-full h-full object-cover" />
             </div>
           </div>
 
