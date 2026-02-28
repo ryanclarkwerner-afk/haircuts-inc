@@ -1,14 +1,6 @@
 import { motion } from "framer-motion";
-import { Scissors, Paintbrush, Sparkles, Wind, UserRound, Baby } from "lucide-react";
-
-const services = [
-  { icon: Scissors, name: "Haircuts", desc: "Precision cuts tailored to your style." },
-  { icon: Paintbrush, name: "Color & Highlights", desc: "Vibrant color that lasts." },
-  { icon: Sparkles, name: "Balayage", desc: "Hand-painted, natural-looking color." },
-  { icon: Wind, name: "Perms", desc: "Modern texture and volume." },
-  { icon: UserRound, name: "Beard Trims", desc: "Sharp, clean beard shaping." },
-  { icon: Baby, name: "Kids Cuts", desc: "Fun, stress-free cuts for little ones." },
-];
+import { serviceCategories } from "@/data/services";
+import { cardBase } from "@/lib/styles";
 
 const container = {
   hidden: {},
@@ -40,12 +32,12 @@ const ServicesStrip = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          {services.map((service) => (
+          {serviceCategories.map((service) => (
             <motion.div
               key={service.name}
               variants={item}
               whileHover={{ y: -4, borderColor: "hsl(22, 100%, 45%)" }}
-              className="bg-card border-l-2 border-border p-6 rounded-lg transition-colors cursor-default"
+              className={`${cardBase} transition-colors cursor-default`}
             >
               <service.icon className="text-primary mb-3" size={28} />
               <h3 className="font-heading text-lg font-bold mb-1">{service.name}</h3>

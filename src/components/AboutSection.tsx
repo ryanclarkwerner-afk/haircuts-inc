@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import aboutImage from "@/assets/barbershop.jpg";
+import { btnSecondary } from "@/lib/styles";
 
 const AboutSection = () => {
   return (
@@ -39,7 +40,7 @@ const AboutSection = () => {
               href="https://haircutsinc.zenoti.com/webstoreNew/services"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-8 py-3 rounded-full border border-foreground text-foreground font-heading text-sm tracking-wider uppercase font-bold hover:bg-foreground/10 transition-colors"
+              className={btnSecondary}
             >
               Book Now
             </a>

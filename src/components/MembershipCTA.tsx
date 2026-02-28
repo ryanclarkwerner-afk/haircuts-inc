@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { btnPrimary } from "@/lib/styles";
 
 const MembershipCTA = () => {
   return (
@@ -22,7 +23,7 @@ const MembershipCTA = () => {
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="inline-block">
             <Link
               to="/memberships"
-              className="inline-flex items-center px-8 py-3 rounded-full bg-primary text-primary-foreground font-heading text-sm tracking-wider uppercase font-bold"
+              className={btnPrimary}
             >
               View Memberships
             </Link>

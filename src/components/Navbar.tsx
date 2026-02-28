@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "../assets/haircuts-inc-logo.png";
+import { btnPrimary } from "@/lib/styles";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -36,8 +38,8 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 h-16 md:h-20">
-        <Link to="/" className="logo-wordmark">
-          HAIRCUTS INC.
+        <Link to="/">
+          <img src={logo} alt="Haircuts Inc." className="h-10 md:h-12 w-auto" />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
@@ -59,7 +61,7 @@ const Navbar = () => {
             href="https://haircutsinc.zenoti.com/webstoreNew/services"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:inline-flex items-center px-6 py-2 rounded-full bg-primary text-primary-foreground font-heading text-sm tracking-wider uppercase font-bold hover:opacity-90 transition-opacity"
+            className={`hidden md:inline-flex ${btnPrimary}`}
           >
             Book Now
           </a>
@@ -98,7 +100,7 @@ const Navbar = () => {
                 href="https://haircutsinc.zenoti.com/webstoreNew/services"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground font-heading text-sm tracking-wider uppercase font-bold mt-2"
+                className={`justify-center mt-2 ${btnPrimary}`}
               >
                 Book Now
               </a>

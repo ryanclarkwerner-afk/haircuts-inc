@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook } from "lucide-react";
+import logo from "../assets/haircuts-inc-logo.png";
 
 const Footer = () => {
   return (
@@ -7,8 +8,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-12">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
           <div className="flex flex-col items-center md:items-start gap-3">
-            <Link to="/" className="logo-wordmark text-lg">
-              HAIRCUTS INC.
+            <Link to="/">
+              <img src={logo} alt="Haircuts Inc." className="h-8 w-auto" />
             </Link>
             <p className="text-muted-foreground text-sm italic">
               Cutting-edge styles, Hometown values.
@@ -53,7 +54,7 @@ const Footer = () => {
 
         <div className="mt-8 pt-6 border-t border-border text-center">
           <p className="text-muted-foreground text-xs">
-            © 2025 Haircuts Inc. All rights reserved.
+            © 2026 Haircuts Inc. All rights reserved.
           </p>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Clock, MapPin, Phone, Mail } from "lucide-react";
+import { Clock, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 
 const HoursContact = () => {
   return (
@@ -55,8 +55,23 @@ const HoursContact = () => {
             </div>
           </div>
 
-          <div className="bg-secondary rounded-lg aspect-video flex items-center justify-center">
-            <span className="text-muted-foreground font-heading text-sm tracking-wider">[Google Maps]</span>
+          <div className="rounded-lg aspect-video overflow-hidden relative">
+            <iframe
+              title="Haircuts Inc. Location"
+              src="https://www.google.com/maps?q=123+Main+Street,+Logan,+UT+84321&output=embed"
+              className="w-full h-full border-0"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=123+Main+Street,+Logan,+UT+84321"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-background/90 backdrop-blur-sm text-foreground font-heading text-xs tracking-wider uppercase font-bold hover:bg-background transition-colors"
+            >
+              Get Directions <ExternalLink size={12} />
+            </a>
           </div>
         </motion.div>
       </div>

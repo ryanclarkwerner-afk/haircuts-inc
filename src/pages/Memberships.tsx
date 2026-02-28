@@ -1,24 +1,21 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
+import { btnPrimaryFull, btnSecondaryFull, cardFeatured } from "@/lib/styles";
 
 const tiers = [
   {
     name: "Basic",
-    price: 29,
     features: ["1 haircut/month", "10% off services"],
     highlighted: false,
   },
   {
     name: "Pro",
-    price: 49,
     features: ["2 haircuts/month", "15% off services", "Priority booking"],
     highlighted: true,
   },
   {
     name: "Elite",
-    price: 79,
     features: ["Unlimited cuts", "20% off all services", "Free beard trim/month", "VIP priority"],
     highlighted: false,
   },
@@ -47,18 +44,14 @@ const Memberships = () => (
               key={tier.name}
               variants={item}
               whileHover={{ y: -8 }}
-              className={`bg-card rounded-xl p-8 flex flex-col border-2 relative ${tier.highlighted ? "border-primary" : "border-border"}`}
+              className={`${cardFeatured} flex flex-col relative ${tier.highlighted ? "border-primary" : "border-border"}`}
             >
               {tier.highlighted && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-heading font-bold tracking-wider uppercase px-4 py-1 rounded-full">
                   Most Popular
                 </span>
               )}
-              <h3 className="font-heading text-2xl font-bold mb-2">{tier.name}</h3>
-              <div className="mb-6">
-                <span className="text-4xl font-extrabold font-heading">${tier.price}</span>
-                <span className="text-muted-foreground text-sm">/mo</span>
-              </div>
+              <h3 className="font-heading text-2xl font-bold mb-6">{tier.name}</h3>
               <ul className="space-y-3 flex-1 mb-8">
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-center gap-2 text-sm">
@@ -68,16 +61,14 @@ const Memberships = () => (
                 ))}
               </ul>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  to="/book"
-                  className={`inline-flex items-center justify-center w-full px-6 py-3 rounded-full font-heading text-sm tracking-wider uppercase font-bold ${
-                    tier.highlighted
-                      ? "bg-primary text-primary-foreground"
-                      : "border border-foreground text-foreground hover:bg-foreground/10 transition-colors"
-                  }`}
+                <a
+                  href="https://haircutsinc.zenoti.com/webstoreNew/services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={tier.highlighted ? btnPrimaryFull : btnSecondaryFull}
                 >
                   Get Started
-                </Link>
+                </a>
               </motion.div>
             </motion.div>
           ))}

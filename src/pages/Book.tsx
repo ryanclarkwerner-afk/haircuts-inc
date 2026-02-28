@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
+import { btnPrimary } from "@/lib/styles";
 
 const Book = () => (
   <PageTransition>
@@ -22,7 +23,7 @@ const Book = () => (
           rel="noopener noreferrer"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center px-10 py-4 rounded-full bg-primary text-primary-foreground font-heading text-lg tracking-wider uppercase font-bold"
+          className={btnPrimary}
         >
           Book Your Appointment
         </motion.a>

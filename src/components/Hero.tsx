@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-main.jpg";
+import { btnPrimary, btnSecondary } from "@/lib/styles";
 
 const container = {
   hidden: {},
@@ -57,7 +58,7 @@ const Hero = () => {
                   href="https://haircutsinc.zenoti.com/webstoreNew/services"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-8 py-3 rounded-full bg-primary text-primary-foreground font-heading text-sm tracking-wider uppercase font-bold"
+                  className={btnPrimary}
                 >
                   Book Now
                 </a>
@@ -65,7 +66,7 @@ const Hero = () => {
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <Link
                   to="/services"
-                  className="inline-flex items-center px-8 py-3 rounded-full border border-foreground text-foreground font-heading text-sm tracking-wider uppercase font-bold hover:bg-foreground/10 transition-colors"
+                  className={btnSecondary}
                 >
                   See Our Services
                 </Link>
