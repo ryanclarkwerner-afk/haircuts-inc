@@ -53,12 +53,14 @@ const Hero = () => {
 
             <motion.div variants={item} className="flex flex-wrap gap-4 pt-2">
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  to="/book"
+                <a
+                  href="https://haircutsinc.zenoti.com/webstoreNew/services"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center px-8 py-3 rounded-full bg-primary text-primary-foreground font-heading text-sm tracking-wider uppercase font-bold"
                 >
                   Book Now
-                </Link>
+                </a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                 <Link

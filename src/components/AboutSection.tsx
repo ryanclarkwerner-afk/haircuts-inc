@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import aboutImage from "@/assets/barbershop.jpg";
 
 const AboutSection = () => {
@@ -36,12 +35,14 @@ const AboutSection = () => {
             to give you the best possible care.
           </p>
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="self-start">
-            <Link
-              to="/book"
+            <a
+              href="https://haircutsinc.zenoti.com/webstoreNew/services"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-8 py-3 rounded-full border border-foreground text-foreground font-heading text-sm tracking-wider uppercase font-bold hover:bg-foreground/10 transition-colors"
             >
               Book Now
-            </Link>
+            </a>
           </motion.div>
         </motion.div>
       </div>

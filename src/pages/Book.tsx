@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
 
 const Book = () => (
@@ -18,7 +17,9 @@ const Book = () => (
           Ready for a fresh look? Schedule your appointment today.
         </p>
         <motion.a
-          href="#book"
+          href="https://haircutsinc.zenoti.com/webstoreNew/services"
+          target="_blank"
+          rel="noopener noreferrer"
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           className="inline-flex items-center px-10 py-4 rounded-full bg-primary text-primary-foreground font-heading text-lg tracking-wider uppercase font-bold"

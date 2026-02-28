@@ -55,12 +55,14 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <Link
-            to="/book"
+          <a
+            href="https://haircutsinc.zenoti.com/webstoreNew/services"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:inline-flex items-center px-6 py-2 rounded-full bg-primary text-primary-foreground font-heading text-sm tracking-wider uppercase font-bold hover:opacity-90 transition-opacity"
           >
             Book Now
-          </Link>
+          </a>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden text-foreground"
@@ -92,12 +94,14 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                to="/book"
+              <a
+                href="https://haircutsinc.zenoti.com/webstoreNew/services"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground font-heading text-sm tracking-wider uppercase font-bold mt-2"
               >
                 Book Now
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

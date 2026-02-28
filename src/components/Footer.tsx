@@ -22,7 +22,6 @@ const Footer = () => {
               { to: "/memberships", label: "Memberships" },
               { to: "/corporate", label: "Corporate" },
               { to: "/about", label: "About" },
-              { to: "/book", label: "Book Now" },
             ].map((link) => (
               <Link
                 key={link.to}
@@ -32,6 +31,14 @@ const Footer = () => {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="https://haircutsinc.zenoti.com/webstoreNew/services"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground text-sm hover:text-primary transition-colors font-heading tracking-wider uppercase"
+            >
+              Book Now
+            </a>
           </div>
 
           <div className="flex items-center gap-4">
