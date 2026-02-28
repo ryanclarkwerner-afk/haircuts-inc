@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
+import salonImage from "@/assets/salon-interior.jpg";
+import mensHaircut from "@/assets/mens-haircut.png";
+import balayageImg from "@/assets/balayage.jpg";
+import hairColor from "@/assets/hair-color.jpg";
 
 const team = [
-  { name: "Jordan Lee", title: "Lead Stylist" },
-  { name: "Alex Rivera", title: "Color Specialist" },
-  { name: "Sam Torres", title: "Barber" },
-  { name: "Casey Morgan", title: "Senior Stylist" },
+  { name: "Jordan Lee", title: "Lead Stylist", img: mensHaircut },
+  { name: "Alex Rivera", title: "Color Specialist", img: hairColor },
+  { name: "Sam Torres", title: "Barber", img: balayageImg },
+  { name: "Casey Morgan", title: "Senior Stylist", img: salonImage },
 ];
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.1 } } };
@@ -34,12 +38,14 @@ const About = () => (
 
         <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {team.map((member) => (
-            <motion.div key={member.name} variants={item} className="bg-card rounded-lg p-6 text-center">
-              <div className="w-20 h-20 rounded-full bg-secondary mx-auto mb-4 flex items-center justify-center">
-                <span className="text-muted-foreground text-xs font-heading">[Photo]</span>
+            <motion.div key={member.name} variants={item} className="bg-card rounded-lg overflow-hidden">
+              <div className="aspect-square overflow-hidden">
+                <img src={member.img} alt={member.name} className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-heading font-bold text-sm">{member.name}</h3>
-              <p className="text-muted-foreground text-xs mt-1">{member.title}</p>
+              <div className="p-4 text-center">
+                <h3 className="font-heading font-bold text-sm">{member.name}</h3>
+                <p className="text-muted-foreground text-xs mt-1">{member.title}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

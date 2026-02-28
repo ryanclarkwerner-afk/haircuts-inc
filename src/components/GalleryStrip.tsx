@@ -1,6 +1,23 @@
 import { motion } from "framer-motion";
+import gallery1 from "@/assets/gallery-1.webp";
+import gallery2 from "@/assets/gallery-2.webp";
+import gallery3 from "@/assets/gallery-3.webp";
+import gallery4 from "@/assets/gallery-4.webp";
+import gallery5 from "@/assets/gallery-5.png";
+import gallery6 from "@/assets/gallery-6.png";
+import gallery7 from "@/assets/gallery-7.png";
+import gallery8 from "@/assets/gallery-8.png";
 
-const images = Array.from({ length: 8 }, (_, i) => i + 1);
+const images = [
+  { src: gallery1, alt: "Men's haircut" },
+  { src: gallery2, alt: "Salon styling" },
+  { src: gallery3, alt: "Hair styling" },
+  { src: gallery4, alt: "Haircut result" },
+  { src: gallery5, alt: "Hair coloring" },
+  { src: gallery6, alt: "Beard and haircut trim" },
+  { src: gallery7, alt: "Bald fade" },
+  { src: gallery8, alt: "Women's haircut" },
+];
 
 const GalleryStrip = () => {
   return (
@@ -23,19 +40,22 @@ const GalleryStrip = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {images.map((n) => (
+          {images.map((img, i) => (
             <motion.div
-              key={n}
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.4 }}
-              className="aspect-square bg-secondary rounded-md flex items-center justify-center overflow-hidden cursor-pointer group"
+              className="aspect-square rounded-md overflow-hidden cursor-pointer group"
             >
-              <span className="text-muted-foreground font-heading text-sm tracking-wider group-hover:text-primary transition-colors">
-                [Photo {n}]
-              </span>
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110"
+                loading="lazy"
+              />
             </motion.div>
           ))}
         </div>

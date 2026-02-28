@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import aboutImage from "@/assets/barbershop.jpg";
 
 const AboutSection = () => {
   return (
@@ -11,8 +12,8 @@ const AboutSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-full aspect-[4/5] bg-secondary rounded-lg flex items-center justify-center">
-            <span className="text-muted-foreground font-heading text-xl tracking-wider">[Salon Photo]</span>
+          <div className="w-full aspect-[4/5] rounded-lg overflow-hidden">
+            <img src={aboutImage} alt="Inside Haircuts Inc." className="w-full h-full object-cover" />
           </div>
         </motion.div>
 
