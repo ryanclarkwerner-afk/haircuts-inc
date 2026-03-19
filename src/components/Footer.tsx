@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram } from "lucide-react";
 import logo from "../assets/haircuts-inc-logo.png";
 
 const Footer = () => {
@@ -43,11 +43,14 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <a href="#" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-colors">
+            <a
+              href="https://www.instagram.com/haircuts.incorporated/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               <Instagram size={20} />
-            </a>
-            <a href="#" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors">
-              <Facebook size={20} />
             </a>
           </div>
         </div>

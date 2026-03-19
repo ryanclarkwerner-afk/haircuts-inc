@@ -1,13 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
+const SALON_ADDRESS = "1545 N Main Street, Logan, UT 84321";
+const GOOGLE_MAPS_HREF = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  SALON_ADDRESS
+)}`;
+const APPLE_MAPS_HREF = `https://maps.apple.com/?address=${encodeURIComponent(
+  SALON_ADDRESS
+)}`;
+
+function LocationAnswer() {
+  const [mapsHref, setMapsHref] = useState(GOOGLE_MAPS_HREF);
+
+  useEffect(() => {
+    // Use runtime detection so iOS users open Apple Maps while others open Google Maps.
+    const ua = navigator.userAgent || "";
+    const isIOSLike =
+      /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    if (isIOSLike) setMapsHref(APPLE_MAPS_HREF);
+  }, []);
+
+  return (
+    <>
+      We're located at{" "}
+      <a
+        href={mapsHref}
+        target="_blank"
+        rel="noreferrer"
+        className="text-primary underline hover:no-underline"
+      >
+        {SALON_ADDRESS}
+      </a>
+    </>
+  );
+}
+
 const faqs = [
   { q: "What are your salon hours?", a: "Mon–Sat, 9am–7pm. Closed Sundays." },
-  { q: "Do you accept walk-ins?", a: "Yes! Walk-ins are welcome, though appointments are recommended." },
-  { q: "What services do you offer?", a: "We offer haircuts, color, highlights, balayage, perms, beard trims, and kids cuts." },
+  { q: "Do you accept walk-ins?", a: "Yes! Walk-ins are welcome, though appointments are recommended and prioritized. Please book using the \"Book Now\" button here or call/text us at 435-535-3638." },
+  { q: "What services do you offer?", a: "We offer haircuts, colors, highlights, perms, beard trims, waxing, and more. Please view our \"services\" tab for a more comprehensive list and pricing." },
   { q: "Do you offer memberships?", a: "Yes — check our Memberships page for details on our monthly plans." },
-  { q: "Where are you located?", a: "We're located in Logan, Utah. See our contact section for the full address." },
+  { q: "Where are you located?", a: <LocationAnswer /> },
 ];
 
 const FAQAccordion = () => {

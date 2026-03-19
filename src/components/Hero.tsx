@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-main.jpg";
+import heroImage from "../../Logos and images/IMG_3183.jpeg";
 import { btnPrimary, btnSecondary } from "@/lib/styles";
 
 const container = {
@@ -24,7 +24,11 @@ const Hero = () => {
           {/* Image */}
           <div className="md:col-span-3 hidden md:flex items-center justify-center">
             <div className="w-full aspect-[4/5] max-h-[70vh] rounded-lg overflow-hidden">
-              <img src={heroImage} alt="Haircuts Inc. salon" className="w-full h-full object-cover" />
+              <img
+                src={heroImage}
+                alt="Hair Salon Near Me"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 

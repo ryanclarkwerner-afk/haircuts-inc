@@ -23,6 +23,9 @@ const Corporate = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [submitted, setSubmitted] = useState(false);
 
+  const leftFeatures = features.filter((_, idx) => idx % 2 === 0);
+  const rightFeatures = features.filter((_, idx) => idx % 2 === 1);
+
   const isValid =
     formData.name.trim() !== "" &&
     formData.company.trim() !== "" &&
@@ -55,15 +58,52 @@ const Corporate = () => {
             Partner with Haircuts Inc. for group bookings, corporate accounts, and employee perks your team will love.
           </motion.p>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div variants={container} initial="hidden" animate="show" className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-12">
+            {/* Mobile: keep the original order as a single column */}
+            <motion.div
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="flex flex-col gap-y-0 items-start sm:hidden"
+            >
               {features.map((f) => (
-                <motion.div key={f} variants={item} className="flex items-start gap-3">
-                  <Check className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                  <span className="text-sm">{f}</span>
+                <motion.div key={f} variants={item} className="flex items-start gap-2">
+                  <Check className="text-primary flex-shrink-0" size={20} />
+                  <span className="text-[0.95rem] leading-tight">{f}</span>
                 </motion.div>
               ))}
             </motion.div>
+
+            {/* Desktop: two independent flex columns (even/odd) */}
+            <div className="hidden sm:grid sm:grid-cols-2 gap-x-6">
+              <motion.div
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="flex flex-col gap-y-0.5 items-start"
+              >
+                {leftFeatures.map((f) => (
+                  <motion.div key={f} variants={item} className="flex items-start gap-2">
+                    <Check className="text-primary flex-shrink-0" size={20} />
+                    <span className="text-[0.95rem] leading-tight">{f}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <motion.div
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="flex flex-col gap-y-0.5 items-start"
+              >
+                {rightFeatures.map((f) => (
+                  <motion.div key={f} variants={item} className="flex items-start gap-2">
+                    <Check className="text-primary flex-shrink-0" size={20} />
+                    <span className="text-[0.95rem] leading-tight">{f}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
 
             <AnimatePresence mode="wait">
               {submitted ? (
@@ -71,7 +111,7 @@ const Corporate = () => {
                   key="confirmation"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-card rounded-lg p-8 flex flex-col items-center justify-center text-center gap-4"
+                  className="bg-card rounded-lg p-8 flex flex-col items-center justify-center text-center gap-4 max-w-xl mx-auto w-full"
                 >
                   <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
                     <Check className="text-primary" size={24} />
@@ -96,7 +136,7 @@ const Corporate = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="bg-card rounded-lg p-8 space-y-4"
+                  className="bg-card rounded-lg p-8 space-y-4 max-w-xl mx-auto w-full"
                   onSubmit={handleSubmit}
                 >
                   <h3 className="font-heading text-xl font-bold mb-2">GET IN TOUCH</h3>

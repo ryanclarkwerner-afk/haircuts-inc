@@ -1,22 +1,31 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import logo from "../assets/haircuts-inc-logo.png";
 import { btnPrimary } from "@/lib/styles";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { servicesSections } from "@/data/servicesDetails";
 
 const navLinks = [
   { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
   { to: "/memberships", label: "Memberships" },
   { to: "/corporate", label: "Corporate" },
   { to: "/about", label: "About" },
 ];
 
+const serviceJumpLinks = servicesSections.map((s) => ({
+  id: s.id,
+  label: s.header,
+}));
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const isServicesPage = location.pathname === "/services";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -54,6 +63,28 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className={`font-heading text-sm tracking-widest uppercase transition-colors hover:text-primary ${
+                isServicesPage ? "text-primary" : "text-foreground"
+              }`}
+              aria-label="Services menu"
+            >
+              <span>Services</span>
+              <ChevronDown className="h-4 w-4 ml-1" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start">
+              {serviceJumpLinks.map((s) => (
+                <DropdownMenuItem
+                  key={s.id}
+                  onSelect={() => navigate(`/services#${s.id}`)}
+                >
+                  {s.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         <div className="flex items-center gap-4">
@@ -96,6 +127,29 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+
+              <div className="pt-2">
+                <div
+                  className={`font-heading text-lg tracking-widest uppercase ${
+                    isServicesPage ? "text-primary" : "text-foreground"
+                  }`}
+                >
+                  Services
+                </div>
+                <div className="flex flex-col gap-2 mt-3">
+                  {serviceJumpLinks.map((s) => (
+                    <Link
+                      key={s.id}
+                      to={`/services#${s.id}`}
+                      className={`font-heading text-sm tracking-wider uppercase ${
+                        isServicesPage ? "text-primary" : "text-foreground"
+                      }`}
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
               <a
                 href="https://haircutsinc.zenoti.com/webstoreNew/services"
                 target="_blank"

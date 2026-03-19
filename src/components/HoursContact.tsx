@@ -1,7 +1,37 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Clock, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import { Clock, MapPin, Phone, ExternalLink } from "lucide-react";
+
+const SALON_ADDRESS = "1545 N Main Street, Logan, UT 84321";
+const PHONE_DISPLAY = "435-535-3638";
+const PHONE_TEL_HREF = "tel:+14355353638";
+const GOOGLE_EMBED_SRC = `https://www.google.com/maps?q=${SALON_ADDRESS.replaceAll(
+  " ",
+  "+"
+)}` + "&output=embed";
+const GOOGLE_MAPS_HREF = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  SALON_ADDRESS
+)}`;
+const APPLE_MAPS_HREF = `https://maps.apple.com/?address=${encodeURIComponent(
+  SALON_ADDRESS
+)}`;
+
+function getIsIOSLike() {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent || "";
+  return (
+    /iPad|iPhone|iPod/.test(ua) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+  );
+}
 
 const HoursContact = () => {
+  const [mapsHref, setMapsHref] = useState(GOOGLE_MAPS_HREF);
+
+  useEffect(() => {
+    if (getIsIOSLike()) setMapsHref(APPLE_MAPS_HREF);
+  }, []);
+
   return (
     <section className="section-padding">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
@@ -42,15 +72,24 @@ const HoursContact = () => {
             <div className="space-y-4 text-sm">
               <div className="flex items-start gap-3">
                 <MapPin className="text-primary flex-shrink-0 mt-0.5" size={18} />
-                <span className="text-muted-foreground">123 Main Street, Logan, UT 84321</span>
+                <a
+                  href={mapsHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-muted-foreground hover:underline underline-offset-4"
+                >
+                  {SALON_ADDRESS}
+                </a>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="text-primary flex-shrink-0" size={18} />
-                <span className="text-muted-foreground">(435) 555-0123</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="text-primary flex-shrink-0" size={18} />
-                <span className="text-muted-foreground">hello@haircutsinc.com</span>
+                <a
+                  href={PHONE_TEL_HREF}
+                  className="text-muted-foreground hover:underline underline-offset-4"
+                  aria-label={`Call us at ${PHONE_DISPLAY}`}
+                >
+                  {PHONE_DISPLAY}
+                </a>
               </div>
             </div>
           </div>
@@ -58,14 +97,14 @@ const HoursContact = () => {
           <div className="rounded-lg aspect-video overflow-hidden relative">
             <iframe
               title="Haircuts Inc. Location"
-              src="https://www.google.com/maps?q=123+Main+Street,+Logan,+UT+84321&output=embed"
+              src={GOOGLE_EMBED_SRC}
               className="w-full h-full border-0"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
             <a
-              href="https://www.google.com/maps/dir/?api=1&destination=123+Main+Street,+Logan,+UT+84321"
+              href={mapsHref}
               target="_blank"
               rel="noopener noreferrer"
               className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-background/90 backdrop-blur-sm text-foreground font-heading text-xs tracking-wider uppercase font-bold hover:bg-background transition-colors"
