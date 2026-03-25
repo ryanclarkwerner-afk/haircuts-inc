@@ -30,7 +30,7 @@ export const servicesSections: ServiceSection[] = [
       {
         name: "Kid's and Seniors Basic Haircut",
         price: "$20",
-        desc: "Our standard haircut for 10 and under or over 60 + a free wash. No bald fades, mullets, or flat tops.",
+        desc: "Our standard haircut for 10 and under or 60+. No bald fades, mullets, or flat tops.",
       },
       {
         name: "Men's Specialty Haircut",
