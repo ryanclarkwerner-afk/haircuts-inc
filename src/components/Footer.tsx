@@ -59,6 +59,12 @@ const Footer = () => {
           <p className="text-muted-foreground text-xs">
             © 2026 Haircuts Inc. All rights reserved.
           </p>
+          <Link
+            to="/privacy-policy"
+            className="text-muted-foreground/60 text-xs hover:text-muted-foreground transition-colors mt-2 inline-block"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </footer>
